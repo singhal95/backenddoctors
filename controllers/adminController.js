@@ -197,7 +197,8 @@ getTotalPAtientByDate = async (req,res)=>{
     try{
 
         const date = await Bookings.aggregate([{ $group: { _id: null, maxDate: { $max: "$bookingDate" } } }])
-        console.log(date)
+        if(date.length == 0)
+           res.status(200).json({status:210})
         const maxDate = date[0].maxDate
         maxDate.setHours(0, 0, 0, 0)
         console.log(maxDate)
