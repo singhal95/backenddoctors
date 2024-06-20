@@ -7,7 +7,8 @@ const newRoutes = require('./routes/newRoute')
 const adminRoutes = require('./routes/adminRoute')
 const patientRoutes = require('./routes/patientRoute')
 const doctorRoutes = require('./routes/doctorRoute')
-const cors = require("cors");
+const cors = require("cors")
+const path = require('path');
 
 //creating an object for express
 const app = express();
@@ -23,7 +24,7 @@ const PORT = 3001;
 //midleware means that has access to req,res,next object.
 app.use(cors());
 app.use(express.json());
-app.use(express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(userRoutes);
 app.use(newRoutes);
 app.use(adminRoutes);
@@ -32,9 +33,7 @@ app.use(patientRoutes)
 
 
 //defining these midlware so that if any url comes whose route isnot defined we can send the default response
-app.all('*',(req,res)=>{
-    res.status(404).send({"message":`not a valid url ${req.originalUrl}`})
-})
+
 
 
 
