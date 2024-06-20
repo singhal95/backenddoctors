@@ -24,7 +24,7 @@ const PORT = 3001;
 //midleware means that has access to req,res,next object.
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static('uploads'));
 app.use(userRoutes);
 app.use(newRoutes);
 app.use(adminRoutes);
