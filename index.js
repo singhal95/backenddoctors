@@ -43,7 +43,11 @@ app.all('*',(req,res)=>{
 //27017 is a default port number where monogodb server runs 
 //doctorsapp is a db name that will be created for our application.
 
-mongoose.connect("mongodb://127.0.0.1:27017/doctorsapp").then(()=>{
+
+
+
+
+mongoose.connect("mongodb+srv://nitin07singhal:dCFOl2TRnlMLUFhb@workshop.uktxcbm.mongodb.net/doctorsapp?retryWrites=true&w=majority&appName=workshop").then(()=>{
     console.log("connected to mongoDB");
 }).catch((err)=>{
     console.log(err);
